@@ -20,13 +20,14 @@ export const AnalyticsPage = () => {
   if (analytics.error) return <ErrorState message="Could not load analytics." />;
 
   return (
-    <div className="space-y-4">
-      <div className="flex flex-col gap-4 xl:flex-row xl:items-end xl:justify-between">
+    <div className="flex flex-col gap-3 xl:h-[calc(100vh-5rem)] xl:overflow-hidden">
+      {/* Header row - compact */}
+      <div className="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
         <div>
-          <h1 className="text-3xl font-black tracking-tight text-slate-950 dark:text-slate-50 sm:text-4xl">
+          <h1 className="text-2xl font-black tracking-tight text-slate-950 dark:text-slate-50 sm:text-3xl">
             Analytics Overview
           </h1>
-          <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">Performance metrics and email processing trends.</p>
+          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Performance metrics and email processing trends.</p>
         </div>
         <div className="flex w-fit rounded-md border border-sky-200 bg-sky-50 p-1 dark:border-slate-700 dark:bg-slate-900">
           {ranges.map(range => (
@@ -42,14 +43,15 @@ export const AnalyticsPage = () => {
         </div>
       </div>
 
+      {/* Metric cards row */}
       <MetricCards totals={analytics.data?.totals} summary={summary.data} />
 
-      <div className="grid gap-6 xl:grid-cols-[2fr_1fr]">
+      {/* Charts row - all 3 panels side-by-side on desktop */}
+      <div className="grid flex-1 gap-3 xl:grid-cols-[5fr_2fr_3fr] xl:min-h-0">
         <VolumeTrendChart days={analytics.data?.days || []} />
         <ActionBreakdown totals={analytics.data?.totals} />
+        <LabelDistribution labels={analytics.data?.totals?.labels || {}} />
       </div>
-
-      <LabelDistribution labels={analytics.data?.totals?.labels || {}} />
     </div>
   );
 };

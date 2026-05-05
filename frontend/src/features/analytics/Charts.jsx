@@ -20,12 +20,12 @@ const actionColors = {
 };
 
 export const VolumeTrendChart = ({ days = [] }) => (
-  <Card className="p-4 xl:col-span-2">
-    <div className="mb-4 flex items-center justify-between">
-      <h2 className="text-xl font-bold text-slate-950 dark:text-slate-50">Volume Trend</h2>
+  <Card className="flex flex-col p-4">
+    <div className="mb-3 flex items-center justify-between">
+      <h2 className="text-lg font-bold text-slate-950 dark:text-slate-50">Volume Trend</h2>
       <FiMoreHorizontal className="h-5 w-5 text-slate-400" />
     </div>
-    <div className="h-64 rounded-md border border-sky-200 bg-sky-100 p-3 dark:border-slate-800 dark:bg-slate-950/60">
+    <div className="flex-1 min-h-0 rounded-md border border-sky-200 bg-sky-100 p-3 dark:border-slate-800 dark:bg-slate-950/60">
       <ResponsiveContainer width="100%" height="100%">
         <AreaChart data={days}>
           <defs>
@@ -55,12 +55,12 @@ export const ActionBreakdown = ({ totals = {} }) => {
   const total = data.reduce((sum, item) => sum + item.value, 0);
 
   return (
-    <Card className="p-4">
-      <h2 className="text-xl font-bold text-slate-950 dark:text-slate-50">Action Breakdown</h2>
-      <div className="relative mt-4 h-48">
+    <Card className="flex flex-col p-4">
+      <h2 className="text-lg font-bold text-slate-950 dark:text-slate-50">Action Breakdown</h2>
+      <div className="relative mt-3 flex-1 min-h-0">
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
-            <Pie data={data} innerRadius={70} outerRadius={95} paddingAngle={3} dataKey="value">
+            <Pie data={data} innerRadius={55} outerRadius={80} paddingAngle={3} dataKey="value">
               {data.map(item => <Cell key={item.key} fill={actionColors[item.key]} />)}
             </Pie>
           </PieChart>
@@ -70,7 +70,7 @@ export const ActionBreakdown = ({ totals = {} }) => {
           <p className="text-xs font-semibold text-slate-400">Total</p>
         </div>
       </div>
-      <div className="mt-4 space-y-3">
+      <div className="mt-3 space-y-2">
         {data.map(item => {
           const percent = total ? Math.round((item.value / total) * 100) : 0;
           return (
@@ -94,9 +94,9 @@ export const LabelDistribution = ({ labels = {} }) => {
   const colors = ["bg-blue-300", "bg-emerald-400", "bg-rose-300", "bg-violet-300", "bg-slate-400"];
 
   return (
-    <Card className="p-4">
-      <h2 className="text-xl font-bold text-slate-950 dark:text-slate-50">Label Distribution</h2>
-      <div className="mt-5 space-y-4">
+    <Card className="flex flex-col p-4 overflow-auto">
+      <h2 className="text-lg font-bold text-slate-950 dark:text-slate-50">Label Distribution</h2>
+      <div className="mt-3 space-y-3 flex-1">
         {entries.length === 0 ? (
           <p className="text-sm text-slate-500 dark:text-slate-400">No label data yet.</p>
         ) : entries.map(([label, value], index) => {
