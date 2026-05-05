@@ -1,11 +1,10 @@
-import { AnimatePresence, motion } from "framer-motion";
 import { FiArrowLeft, FiCheckCircle, FiFileText, FiCornerUpLeft, FiX } from "react-icons/fi";
 import { Button } from "../../components/common/Button";
 import { Badge } from "../../components/common/Badge";
 import { formatDateTime, titleCase } from "../../utils/formatters";
 
 export const EmailActionDetail = ({ item, onClose, onToggleChecked, isSaving }) => (
-  <AnimatePresence>
+  <>
     {item && (
       <EmailActionDetailContent
         item={item}
@@ -14,27 +13,17 @@ export const EmailActionDetail = ({ item, onClose, onToggleChecked, isSaving }) 
         isSaving={isSaving}
       />
     )}
-  </AnimatePresence>
+  </>
 );
 
 const EmailActionDetailContent = ({ item, onClose, onToggleChecked, isSaving }) => {
-  const MotionDiv = motion.div;
-  const MotionAside = motion.aside;
-
   return (
       <>
-        <MotionDiv
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+        <div
           className="fixed inset-0 z-40 bg-slate-950/40 backdrop-blur-sm lg:hidden"
           onClick={onClose}
         />
-        <MotionAside
-          initial={{ x: "100%" }}
-          animate={{ x: 0 }}
-          exit={{ x: "100%" }}
-          transition={{ type: "spring", stiffness: 280, damping: 30 }}
+        <aside
           className="fixed inset-y-0 right-0 z-50 flex w-full flex-col border-l border-sky-200 bg-sky-50 shadow-2xl dark:border-slate-700 dark:bg-slate-950 sm:w-[480px]"
         >
           <header className="flex items-center justify-between border-b border-sky-200 p-4 dark:border-slate-800">
@@ -98,7 +87,7 @@ const EmailActionDetailContent = ({ item, onClose, onToggleChecked, isSaving }) 
               {item.checked ? "Mark as Unchecked" : "Mark as Checked"}
             </Button>
           </footer>
-        </MotionAside>
+        </aside>
       </>
   );
 };

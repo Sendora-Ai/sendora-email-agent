@@ -15,7 +15,7 @@ export const ProfilePage = () => {
     <div className="space-y-4">
       <div>
         <p className="text-xs font-medium text-slate-500 dark:text-slate-400">Profile Settings</p>
-        <h1 className="mt-1 text-2xl font-bold tracking-tight text-slate-950 dark:text-slate-50 sm:text-4xl">
+        <h1 className="mt-1 text-xl font-bold tracking-tight text-slate-950 dark:text-slate-50 sm:text-2xl">
           Profile & Rules
         </h1>
       </div>

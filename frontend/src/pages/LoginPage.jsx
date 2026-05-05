@@ -15,7 +15,7 @@ export const LoginPage = () => {
         <div className="flex items-center gap-3">
           <HiSparkles className="h-8 w-8 text-violet-300" />
           <div>
-            <h1 className="text-3xl font-bold text-violet-200">Sendora AI</h1>
+            <h1 className="text-xl font-bold text-violet-200">Sendora AI</h1>
             <p className="text-sm text-slate-400">Intelligent Gmail automation</p>
           </div>
         </div>

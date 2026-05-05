@@ -247,7 +247,7 @@ export const startPolling = () => {
         const res = await gmail.users.messages.list({
           userId: "me",
           maxResults: 10,
-          q: "is:unread"
+          q: "is:unread category:primary -from:noreply newer_than:1h"
         });
 
         for (const m of res.data.messages || []) {

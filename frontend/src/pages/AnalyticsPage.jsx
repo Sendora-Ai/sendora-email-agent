@@ -24,7 +24,7 @@ export const AnalyticsPage = () => {
       {/* Header row - compact */}
       <div className="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
         <div>
-          <h1 className="text-2xl font-black tracking-tight text-slate-950 dark:text-slate-50 sm:text-3xl">
+          <h1 className="text-xl font-bold tracking-tight text-slate-950 dark:text-slate-50 sm:text-2xl">
             Analytics Overview
           </h1>
           <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Performance metrics and email processing trends.</p>

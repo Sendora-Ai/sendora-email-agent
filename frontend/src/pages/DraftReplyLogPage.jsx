@@ -41,7 +41,7 @@ export const DraftReplyLogPage = () => {
   return (
     <div className="space-y-4">
       <div>
-        <h1 className="text-3xl font-black tracking-tight text-slate-950 dark:text-slate-50 sm:text-4xl">
+        <h1 className="text-xl font-bold tracking-tight text-slate-950 dark:text-slate-50 sm:text-2xl">
           Drafts & Replies
         </h1>
         <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">Review generated responses and keep track of what still needs attention.</p>
