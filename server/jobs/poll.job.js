@@ -235,7 +235,7 @@ const processMessage = async ({ user, gmail, messageId }) => {
 };
 
 export const startPolling = () => {
-  cron.schedule("*/2 * * * *", async () => {
+  cron.schedule("* * * * *", async () => {
     try {
       const users = await User.find();
 

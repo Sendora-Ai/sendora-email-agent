@@ -85,6 +85,7 @@ Choose:
 3. Generate body ONLY if action is not none
 
 Rules:
+- don't use "*" in replies
 - reply means a short direct response
 - draft means a slightly more detailed response
 - none means no response is needed
@@ -123,10 +124,19 @@ ${bodyText || snippet || ""}
       usableLabels.some(l => l.name === parsed.label) &&
       ["reply", "draft", "none"].includes(parsed.action)
     ) {
+      const cleanBody = String(parsed.body || "")
+        .replace(/\*\*(.*?)\*\*/g, "$1") // bold
+        .replace(/\*(.*?)\*/g, "$1")     // italic/bullets
+        .replace(/^\s*[-*]\s+/gm, "")    // bullet points
+        .replace(/^\s*\d+\.\s+/gm, "")   // numbered lists
+        .replace(/`/g, "")
+        .replace(/\n{3,}/g, "\n\n")
+        .trim();
+
       return {
         label: parsed.label,
         action: parsed.action,
-        body: parsed.action === "none" ? "" : String(parsed.body || "")
+        body: parsed.action === "none" ? "" : cleanBody
       };
     }
   } catch (e) {
